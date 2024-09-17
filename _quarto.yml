@@ -1,0 +1,31 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Learned"
+  author: "Jonghwan Yoon"
+  date: "2024. 9. 17."
+  chapters:
+    - index.qmd
+    - chapters/intro.qmd
+    - part: chapters/ComputerScience/intro.qmd
+    - part: chapters/Bioinformatics/intro.qmd
+    - part: chapters/Programming/intro.qmd
+    - part: chapters/Rust/intro.qmd
+      chapters: 
+        - chapters/Rust/clap.qmd
+    - part: chapters/Godot/intro.qmd
+    - part: chapters/Godot-Rust/intro.qmd
+    - chapters/references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

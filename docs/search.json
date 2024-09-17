@@ -1,0 +1,22 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Learned",
+    "section": "",
+    "text": "Preface\n배운 것을 정리하는 곳.\n\ncomputer science\nprogramming\nbioinformatics\nmachine learning",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "chapters/Bioinformatics/intro.html",
+    "href": "chapters/Bioinformatics/intro.html",
+    "title": "Bioinformatics",
+    "section": "",
+    "text": "test",
+    "crumbs": [
+      "Bioinformatics"
+    ]
+  }
+]
