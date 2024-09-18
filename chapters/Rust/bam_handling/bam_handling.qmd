@@ -5,9 +5,86 @@ date: "2024-09-18"
 ---
 
 
-noodles [@github:noodles] 는 생물정보학 관련 데이터를 다루기 위해 만들어진 순수 rust로 작성된 Crate이다. ([github](https://github.com/zaeleus/noodles))
+noodles [@github:noodles] 는 생물정보학 관련 데이터를 다루기 위해 만들어진 순수 rust로 작성된 Crate이다.
 
 그 중, BAM 파일을 다루는 noodles::bam에 대해서 bam파일을 읽고 쓰는 방법에 대해 정리한다. pysam과 비교하며 진행한다.
 
+benchmarking에는 hyperfine [@Peter_hyperfine_2023]을 사용한다.
 
+
+## noodles 설치
+
+
+```bash
+cargo add noodles --features bam,bgzf,sam
+cargo add noodles-bgzf --features libdeflate
+```
+
+`libdeflate`는 빠른 압축/압축해제와 관련된 라이브러리이고 htslib에서도 사용한다. `libdeflate` feature를 추가하지 않아도 사용 가능하지만 속도가 더 느려진다.
+
+
+## 비교에 사용한 BAM
+
+`1000 Genome project`의 FTP에서 제공하는 `phase3`/`HG00096`/`chr20`/`low_coverage`/`bam` 을 사용했다. subject는 FTP 사이트의 제일 위에 있는 것을 선택했다.
+
+```bash
+#!/bin/bash
+
+wget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam
+wget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam.bai
+```
+
+## 성능 비교
+
+### Fetch
+
+**Rust**
+
+```rust
+use noodles_bam as bam;
+
+fn read_and_fetch_bam(input_bam: &str) {
+
+    let mut reader = bam::io::reader::Builder::default()
+        .build_from_path(input_bam).unwrap();
+    let header = reader.read_header();
+    for record in reader.records() {}
+}
+
+```
+
+**Python**
+
+```python
+import pysam
+
+def read_bam_and_fetch(bam_file):
+    with pysam.AlignmentFile(bam_file, "rb") as bam_open:
+        for read in bam_open:
+            pass
+```
+
+**Benchmarking**
+
+![](fetch.png)
+
+➡️ noodles의 fetch 속도가 python보다 1.32배 더 빠르다. 
+
+
+::: {.callout-note title="`libdeflate` feature 추가를 안하면"}
+
+libdeflate를 feature에 추가하지 않으면 pysam보다 약간 더 빠른 수준이다.
+
+![](fetch_wo_optimize.png)
+:::
+
+### Async
+
+### Query
+
+
+### 여러 작업이 동반된 fetch
+
+
+## 결론
 

@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Where Learnings Come Together",
+    "title": "Learning Journal",
     "section": "",
     "text": "Preface\n여러가지 내용을 정리하는 곳.",
     "crumbs": [
@@ -20,14 +20,78 @@
     ]
   },
   {
+    "objectID": "chapters/Rust/intro.html",
+    "href": "chapters/Rust/intro.html",
+    "title": "Rust",
+    "section": "",
+    "text": "Rust에 관련된 내용을 정리하는 곳.",
+    "crumbs": [
+      "Rust"
+    ]
+  },
+  {
     "objectID": "chapters/Rust/bam_handling/bam_handling.html",
     "href": "chapters/Rust/bam_handling/bam_handling.html",
     "title": "2  noodles::bam",
     "section": "",
-    "text": "noodles (zaeleus 2018) 는 생물정보학 관련 데이터를 다루기 위해 만들어진 순수 rust로 작성된 Crate이다. (github)\n그 중, BAM 파일을 다루는 noodles::bam에 대해서 bam파일을 읽고 쓰는 방법에 대해 정리한다. pysam과 비교하며 진행한다.\n\n\n\n\nzaeleus. 2018. “Noodles.” https://github.com/zaeleus/noodles.",
+    "text": "2.1 noodles 설치\nlibdeflate는 빠른 압축/압축해제와 관련된 라이브러리이고 htslib에서도 사용한다. libdeflate feature를 추가하지 않아도 사용 가능하지만 속도가 더 느려진다.",
     "crumbs": [
       "Rust",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>noodles::bam</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/Rust/bam_handling/bam_handling.html#noodles-설치",
+    "href": "chapters/Rust/bam_handling/bam_handling.html#noodles-설치",
+    "title": "2  noodles::bam",
+    "section": "",
+    "text": "cargo add noodles --features bam,bgzf,sam\ncargo add noodles-bgzf --features libdeflate",
+    "crumbs": [
+      "Rust",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>noodles::bam</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/Rust/bam_handling/bam_handling.html#비교에-사용한-bam",
+    "href": "chapters/Rust/bam_handling/bam_handling.html#비교에-사용한-bam",
+    "title": "2  noodles::bam",
+    "section": "2.2 비교에 사용한 BAM",
+    "text": "2.2 비교에 사용한 BAM\n1000 Genome project의 FTP에서 제공하는 phase3/HG00096/chr20/low_coverage/bam 을 사용했다. subject는 FTP 사이트의 제일 위에 있는 것을 선택했다.\n#!/bin/bash\n\nwget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam\nwget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam.bai",
+    "crumbs": [
+      "Rust",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>noodles::bam</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/Rust/bam_handling/bam_handling.html#성능-비교",
+    "href": "chapters/Rust/bam_handling/bam_handling.html#성능-비교",
+    "title": "2  noodles::bam",
+    "section": "2.3 성능 비교",
+    "text": "2.3 성능 비교\n\n2.3.1 Fetch\nRust\nuse noodles_bam as bam;\n\nfn read_and_fetch_bam(input_bam: &str) {\n\n    let mut reader = bam::io::reader::Builder::default()\n        .build_from_path(input_bam).unwrap();\n    let header = reader.read_header();\n    for record in reader.records() {}\n}\nPython\nimport pysam\n\ndef read_bam_and_fetch(bam_file):\n    with pysam.AlignmentFile(bam_file, \"rb\") as bam_open:\n        for read in bam_open:\n            pass\nBenchmarking\n\n➡️ noodles의 fetch 속도가 python보다 1.32배 더 빠르다.\n\n\n\n\n\n\nlibdeflate feature 추가를 안하면\n\n\n\nlibdeflate를 feature에 추가하지 않으면 pysam보다 약간 더 빠른 수준이다.\n\n\n\n\n\n2.3.2 Async\n\n\n2.3.3 Query\n\n\n2.3.4 여러 작업이 동반된 fetch",
+    "crumbs": [
+      "Rust",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>noodles::bam</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/Rust/bam_handling/bam_handling.html#결론",
+    "href": "chapters/Rust/bam_handling/bam_handling.html#결론",
+    "title": "2  noodles::bam",
+    "section": "2.4 결론",
+    "text": "2.4 결론\n\n\n\n\nPeter, David. 2023. “hyperfine.” https://github.com/sharkdp/hyperfine.\n\n\nzaeleus. 2018. “Noodles.” https://github.com/zaeleus/noodles.",
+    "crumbs": [
+      "Rust",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>noodles::bam</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/etc/index.html",
+    "href": "chapters/etc/index.html",
+    "title": "기타",
+    "section": "",
+    "text": "여러 주제에 대해 정리.",
+    "crumbs": [
+      "기타"
     ]
   },
   {

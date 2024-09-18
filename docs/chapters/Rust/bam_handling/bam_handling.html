@@ -9,7 +9,7 @@
 <meta name="author" content="jonghwan">
 <meta name="dcterms.date" content="2024-09-18">
 
-<title>Where Learnings Come Together - 2&nbsp; noodles::bam</title>
+<title>Learning Journal - 2&nbsp; noodles::bam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -119,7 +153,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../../">Where Learnings Come Together</a> 
+      <a href="../../../">Learning Journal</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -214,7 +248,22 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#noodles-설치" id="toc-noodles-설치" class="nav-link active" data-scroll-target="#noodles-설치"><span class="header-section-number">2.1</span> noodles 설치</a></li>
+  <li><a href="#비교에-사용한-bam" id="toc-비교에-사용한-bam" class="nav-link" data-scroll-target="#비교에-사용한-bam"><span class="header-section-number">2.2</span> 비교에 사용한 BAM</a></li>
+  <li><a href="#성능-비교" id="toc-성능-비교" class="nav-link" data-scroll-target="#성능-비교"><span class="header-section-number">2.3</span> 성능 비교</a>
+  <ul class="collapse">
+  <li><a href="#fetch" id="toc-fetch" class="nav-link" data-scroll-target="#fetch"><span class="header-section-number">2.3.1</span> Fetch</a></li>
+  <li><a href="#async" id="toc-async" class="nav-link" data-scroll-target="#async"><span class="header-section-number">2.3.2</span> Async</a></li>
+  <li><a href="#query" id="toc-query" class="nav-link" data-scroll-target="#query"><span class="header-section-number">2.3.3</span> Query</a></li>
+  <li><a href="#여러-작업이-동반된-fetch" id="toc-여러-작업이-동반된-fetch" class="nav-link" data-scroll-target="#여러-작업이-동반된-fetch"><span class="header-section-number">2.3.4</span> 여러 작업이 동반된 fetch</a></li>
+  </ul></li>
+  <li><a href="#결론" id="toc-결론" class="nav-link" data-scroll-target="#결론"><span class="header-section-number">2.4</span> 결론</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -250,15 +299,85 @@ div.csl-indent {
 </header>
 
 
-<p>noodles <span class="citation" data-cites="github:noodles">(<a href="../../references.html#ref-github:noodles" role="doc-biblioref">zaeleus 2018</a>)</span> 는 생물정보학 관련 데이터를 다루기 위해 만들어진 순수 rust로 작성된 Crate이다. (<a href="https://github.com/zaeleus/noodles">github</a>)</p>
+<p>noodles <span class="citation" data-cites="github:noodles">(<a href="../../references.html#ref-github:noodles" role="doc-biblioref">zaeleus 2018</a>)</span> 는 생물정보학 관련 데이터를 다루기 위해 만들어진 순수 rust로 작성된 Crate이다.</p>
 <p>그 중, BAM 파일을 다루는 noodles::bam에 대해서 bam파일을 읽고 쓰는 방법에 대해 정리한다. pysam과 비교하며 진행한다.</p>
+<p>benchmarking에는 hyperfine <span class="citation" data-cites="Peter_hyperfine_2023">(<a href="../../references.html#ref-Peter_hyperfine_2023" role="doc-biblioref">Peter 2023</a>)</span>을 사용한다.</p>
+<section id="noodles-설치" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="noodles-설치"><span class="header-section-number">2.1</span> noodles 설치</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> add noodles <span class="at">--features</span> bam,bgzf,sam</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> add noodles-bgzf <span class="at">--features</span> libdeflate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>libdeflate</code>는 빠른 압축/압축해제와 관련된 라이브러리이고 htslib에서도 사용한다. <code>libdeflate</code> feature를 추가하지 않아도 사용 가능하지만 속도가 더 느려진다.</p>
+</section>
+<section id="비교에-사용한-bam" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="비교에-사용한-bam"><span class="header-section-number">2.2</span> 비교에 사용한 BAM</h2>
+<p><code>1000 Genome project</code>의 FTP에서 제공하는 <code>phase3</code>/<code>HG00096</code>/<code>chr20</code>/<code>low_coverage</code>/<code>bam</code> 을 사용했다. subject는 FTP 사이트의 제일 위에 있는 것을 선택했다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam.bai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="성능-비교" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="성능-비교"><span class="header-section-number">2.3</span> 성능 비교</h2>
+<section id="fetch" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="fetch"><span class="header-section-number">2.3.1</span> Fetch</h3>
+<p><strong>Rust</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> noodles_bam <span class="kw">as</span> bam<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> read_and_fetch_bam(input_bam<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> <span class="kw">mut</span> reader <span class="op">=</span> <span class="pp">bam::io::reader::Builder::</span><span class="kw">default</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span>build_from_path(input_bam)<span class="op">.</span>unwrap()<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> header <span class="op">=</span> reader<span class="op">.</span>read_header()<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> record <span class="kw">in</span> reader<span class="op">.</span>records() <span class="op">{}</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Python</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pysam</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_bam_and_fetch(bam_file):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> pysam.AlignmentFile(bam_file, <span class="st">"rb"</span>) <span class="im">as</span> bam_open:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> read <span class="kw">in</span> bam_open:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Benchmarking</strong></p>
+<p><img src="fetch.png" class="img-fluid"></p>
+<p>➡️ noodles의 fetch 속도가 python보다 1.32배 더 빠르다.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="`libdeflate` feature 추가를 안하면">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>libdeflate</code> feature 추가를 안하면
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>libdeflate를 feature에 추가하지 않으면 pysam보다 약간 더 빠른 수준이다.</p>
+<p><img src="fetch_wo_optimize.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="async" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="async"><span class="header-section-number">2.3.2</span> Async</h3>
+</section>
+<section id="query" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="query"><span class="header-section-number">2.3.3</span> Query</h3>
+</section>
+<section id="여러-작업이-동반된-fetch" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="여러-작업이-동반된-fetch"><span class="header-section-number">2.3.4</span> 여러 작업이 동반된 fetch</h3>
+</section>
+</section>
+<section id="결론" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="결론"><span class="header-section-number">2.4</span> 결론</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Peter_hyperfine_2023" class="csl-entry" role="listitem">
+Peter, David. 2023. <span>“<span class="nocase">hyperfine</span>.”</span> <a href="https://github.com/sharkdp/hyperfine">https://github.com/sharkdp/hyperfine</a>.
+</div>
 <div id="ref-github:noodles" class="csl-entry" role="listitem">
 zaeleus. 2018. <span>“Noodles.”</span> <a href="https://github.com/zaeleus/noodles">https://github.com/zaeleus/noodles</a>.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
