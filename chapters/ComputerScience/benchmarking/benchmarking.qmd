@@ -1,0 +1,48 @@
+---
+title: "성능평가에 사용할 수 있는 도구들"
+author: "jonghwan"
+date: "2024-09-18"
+draft: true
+---
+
+<br><br>
+
+정리 중.
+
+## time {.unnumbered}
+
+[@gnu_bash_time]
+
+`time`은 shell keyword이다. 여기서 소개하는 것은 `/usr/bin/time`에 해당하는 것으로 **shell에 내장된 keyword가 아닌 GNU의 `time`**이다.
+
+```bash
+/usr/bin/time -v sleep 1s
+```
+
+![](time_v.png){width=70%}
+
+- 장점: 상세하다. computing resource도 계산해준다.
+- 단점: unix 계열 아니면 사용할 수 없음.
+
+
+::: {.callout-tip title="TMI"}
+- GNU time은 2017년부터 `Assaf Gordon` 라는 분이 관리했는데 Bioinformatics를 하시는 분이다.👀
+- `which time`도 `/usr/bin/time`을 출력하는데, 그냥 path에 같이 있어서 그렇다. shell keyword로 대상으로 which를 하면 fail code를 반환한다.
+:::
+
+
+## hyperfine {.unnumbered}
+
+[@Peter_hyperfine_2023]
+
+[github](https://github.com/sharkdp/hyperfine)
+
+![](hyperfine_example.png)
+
+
+- 장점: 간단하다. 이쁘고 보기좋게 측정해준다.
+- 단점: CPU, Memory usage는 계산하지 못하는듯.
+
+이쁜 timeit 느낌.
+
+

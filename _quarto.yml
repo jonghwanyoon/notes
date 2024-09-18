@@ -3,20 +3,24 @@ project:
   output-dir: docs
 
 book:
-  title: "Learned"
+  title: "Where Learnings Come Together"
   author: "Jonghwan Yoon"
   date: "2024. 9. 17."
   chapters:
     - index.qmd
-    - chapters/intro.qmd
     - part: chapters/ComputerScience/intro.qmd
+      chapters:
+        - chapters/ComputerScience/benchmarking/benchmarking.qmd
     - part: chapters/Bioinformatics/intro.qmd
     - part: chapters/Programming/intro.qmd
     - part: chapters/Rust/intro.qmd
       chapters: 
-        - chapters/Rust/clap.qmd
+        - chapters/Rust/bam_handling/bam_handling.qmd
     - part: chapters/Godot/intro.qmd
     - part: chapters/Godot-Rust/intro.qmd
+    - part: chapters/etc/index.qmd
+      chapters:
+        - chapters/etc/citation_style.qmd
     - chapters/references.qmd
 
 bibliography: references.bib
@@ -24,8 +28,18 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
+    code-copy: true
+    header-includes: <link rel="stylesheet" media="screen" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" type="text/css"/>
+    mainfont: pretendard
+  # pdf:
+  #   documentclass: scrbook
+  #   pdf-engine: xelatex
+  #   include-in-header: 
+  #     - "pdffont.tex"
+  #   mainfont: "Pretendard"
+  #   keep-tex: true
+
+
 
 
 

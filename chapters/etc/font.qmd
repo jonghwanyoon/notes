@@ -1,0 +1,23 @@
+---
+title: "Qaurto - Font 바꾸기"
+author: "jonghwan"
+date: "2024-09-18"
+---
+
+PDF의 폰트 적용을 정리해보려 했는데 아래 블로그의 글이 너무 정리가 잘되어있다.
+
+[링크](https://statkclee.quarto.pub/quarto-ds/quarto_latex.html)
+
+
+위 블로그를 참고하면서 추가로 필요한 부분만 더해야겠다.
+
+
+### HTML에서 변경 {.unnumbered}
+
+```yaml
+format:
+  html:
+    header-includes: <link rel="stylesheet" media="screen" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" type="text/css"/>
+    mainfont: pretendard
+```
+

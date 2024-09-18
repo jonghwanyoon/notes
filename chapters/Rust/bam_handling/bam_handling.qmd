@@ -1,0 +1,13 @@
+---
+title: "noodles::bam"
+author: "jonghwan"
+date: "2024-09-18"
+---
+
+
+noodles [@github:noodles] 는 생물정보학 관련 데이터를 다루기 위해 만들어진 순수 rust로 작성된 Crate이다. ([github](https://github.com/zaeleus/noodles))
+
+그 중, BAM 파일을 다루는 noodles::bam에 대해서 bam파일을 읽고 쓰는 방법에 대해 정리한다. pysam과 비교하며 진행한다.
+
+
+

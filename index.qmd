@@ -1,8 +1,3 @@
 # Preface {.unnumbered}
 
-배운 것을 정리하는 곳.
-
- - computer science
- - programming
- - bioinformatics
- - machine learning
+여러가지 내용을 정리하는 곳.

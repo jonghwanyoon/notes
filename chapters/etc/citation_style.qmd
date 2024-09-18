@@ -1,0 +1,84 @@
+---
+title: "Quarto의 Citation Style"
+author: "jonghwan"
+date: "2024-09-18"
+image: "image.jpg"
+---
+
+문헌을 작성할 때, 참고자료를 citation을 한다.
+
+LaTex 문서에서 `.bib` 파일은 참고문헌을 정리하기 위한 **BibLaTeX** 파일이다. 여기에 참고문헌 정보가 정리되고 LaTex에서 참고문헌 목록을 자동으로 생성하는데 사용된다.
+
+
+Quarto 에서도 참고문헌 문서화에 `.bib` 파일을 사용한다.
+
+대략적인 정보는 다음 [링크](https://quarto.org/docs/authoring/citations.html#sec-citations-style)에 있다.
+
+
+여기서는 링크에서 다루지 않는 `.bib` 파일에 사용되는 문헌 포맷과 CSL 스타일을 정리한다. 기본 세팅은 다루지 않는다.
+
+
+## `.bib` 파일 구조
+
+해당 파일에는 문헌 별 자료가 존재하는데 이를 entry라고 한다.
+
+각 엔트리는 `@type{uniqueID}` 형식으로 표현된다. 문헌의 고유한 이름은 `uniqueID` 로 표시되고, 문헌 정보는 key={value} 형식으로 입력된다.
+
+주요 타입은 다음과 같다.
+
+- `@article`: 논문을 인용할 때 사용
+- `@book`: 책을 인용할 때 사용
+- `@inproceedings`: 학회 발표 논문
+- `@software`: 소프트웨어 인용시 사용.
+- `@manual`: 사용자 가이드 같은 매뉴얼에 사용.
+- `@misc`: 다양한 출처 (예: 웹사이트) 인용 시 사용
+
+기타 타입은 다음과 같다.
+
+- `@inbook`
+- `@incollection`
+- `@phdthesis`, `@masterthesis`
+
+예를 들면 아래와 같다.
+
+```bib
+@article{knuth:1984,
+  title={Literate Programming},
+  author={Donald E. Knuth},
+  journal={The Computer Journal},
+  volume={27},
+  number={2},
+  pages={97--111},
+  year={1984},
+  publisher={Oxford University Press}
+}
+```
+
+
+위 고유 ID는 `knuth:1984`이다. qmd 파일에 `@knuth:1984`를 입력하면 다음처럼 나타난다.
+
+➡️ @knuth:1984
+
+괄호에 따라 몇가지 변형이 있다.
+
+- `[@knuth:1984]`: [@knuth:1984]
+
+
+
+기본 세팅은 [Chicago Manual fo Style](https://www.chicagomanualofstyle.org/home.html)을 따른다. quarto에서 포맷을 바꾸고 싶다면 CSL 파일을 제공해야한다. 
+
+
+
+## Citation Style Language (CSL) 파일
+
+csl 파일은 citation을 어떻게 표현할지에 대한 포맷이 작성된 XML 파일이다. 
+
+직접수정하기는 어려울 수 있다.
+
+하지만 만들어진 csl 파일이 정말많으므로 원하는 포맷을 검색하는게 더 낫다.
+
+[CSL에서 제공하는 style seacrh engine](https://editor.citationstyles.org/searchByExample/)
+
+
+
+citation 구조를 바꾸기 위해서는 **Citation Style Language**를 주어야 한다. `.csl` 파일을 제공해야 하며 파일이 있을 때 적용하는 방법은 [링크](https://quarto.org/docs/authoring/citations.html#sec-citations-style) 에 있다.
