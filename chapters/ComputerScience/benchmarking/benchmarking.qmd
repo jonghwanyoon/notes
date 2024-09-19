@@ -39,6 +39,7 @@ draft: true
 
 ![](hyperfine_example.png)
 
+benchmarking 도구. 실행시간을 측정할 수 있다. warmup 파라미터로 정해진 횟수만큼 미리 실행해서, 초기화 작업으로 인한 영향 차이를 줄이고 조금 더 정확하게 측정 가능하다고 함.
 
 - 장점: 간단하다. 이쁘고 보기좋게 측정해준다.
 - 단점: CPU, Memory usage는 계산하지 못하는듯.
