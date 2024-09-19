@@ -46,3 +46,21 @@ draft: true
 이쁜 timeit 느낌.
 
 
+## psrecord {.unnumbered}
+
+[@psrecord_2013]
+
+[github](https://github.com/astrofrog/psrecord)
+
+process id를 받고 CPU, Memory를 tracking하는 도구.
+
+```bash
+psrecord --log activity.txt --plot plot.png 'sleep 10s'
+```
+
+**github repo에 있는 예시**
+![](https://github.com/astrofrog/psrecord/blob/main/screenshot.png?raw=true)
+
+- 장점: 별도 process들을 tracking 할 수 있다. ploting이 가능하다.
+- 단점: 아직 딱히 모르겠음. windows 테스트 안해봤음.
+

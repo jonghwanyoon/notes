@@ -254,6 +254,7 @@ div.csl-indent {
   <ul>
   <li><a href="#time" id="toc-time" class="nav-link active" data-scroll-target="#time">time</a></li>
   <li><a href="#hyperfine" id="toc-hyperfine" class="nav-link" data-scroll-target="#hyperfine">hyperfine</a></li>
+  <li><a href="#psrecord" id="toc-psrecord" class="nav-link" data-scroll-target="#psrecord">psrecord</a></li>
   </ul>
 </nav>
     </div>
@@ -330,6 +331,18 @@ TMI
 <li>단점: CPU, Memory usage는 계산하지 못하는듯.</li>
 </ul>
 <p>이쁜 timeit 느낌.</p>
+</section>
+<section id="psrecord" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="psrecord">psrecord</h2>
+<p><span class="citation" data-cites="psrecord_2013">(<a href="../../references.html#ref-psrecord_2013" role="doc-biblioref">Robitaille 2013</a>)</span></p>
+<p><a href="https://github.com/astrofrog/psrecord">github</a></p>
+<p>process id를 받고 CPU, Memory를 tracking하는 도구.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">psrecord</span> <span class="at">--log</span> activity.txt <span class="at">--plot</span> plot.png <span class="st">'sleep 10s'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>github repo에 있는 예시</strong> <img src="https://github.com/astrofrog/psrecord/blob/main/screenshot.png?raw=true" class="img-fluid"></p>
+<ul>
+<li>장점: 별도 process들을 tracking 할 수 있다. ploting이 가능하다.</li>
+<li>단점: 아직 딱히 모르겠음. windows 테스트 안해봤음.</li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -338,6 +351,9 @@ MacKenzie, David. 1996. <em>Time</em>. GNU Project; Online. <a href="https://man
 </div>
 <div id="ref-Peter_hyperfine_2023" class="csl-entry" role="listitem">
 Peter, David. 2023. <span>“<span class="nocase">hyperfine</span>.”</span> <a href="https://github.com/sharkdp/hyperfine">https://github.com/sharkdp/hyperfine</a>.
+</div>
+<div id="ref-psrecord_2013" class="csl-entry" role="listitem">
+Robitaille, Thomas P. 2013. <span>“<span class="nocase">psrecord</span>.”</span> <a href="https://github.com/astrofrog/psrecord">https://github.com/astrofrog/psrecord</a>.
 </div>
 </div>
 </section>
