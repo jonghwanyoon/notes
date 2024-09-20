@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="jonghwan">
-<meta name="dcterms.date" content="2024-09-18">
+<meta name="dcterms.date" content="2024-09-20">
 
-<title>Learning Journal - 1&nbsp; 성능평가에 사용할 수 있는 도구들</title>
+<title>Learning Journal - 2&nbsp; BAM 파일 태그</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,81 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../chapters/Programming/intro.html" rel="next">
-<link href="../../../chapters/ComputerScience/intro.html" rel="prev">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../chapters/Programming/intro.html" rel="next">
+<link href="../../chapters/Bioinformatics/intro.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -138,7 +84,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/ComputerScience/intro.html">Computer Science</a></li><li class="breadcrumb-item"><a href="../../../chapters/ComputerScience/benchmarking/benchmarking.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">성능평가에 사용할 수 있는 도구들</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/Bioinformatics/intro.html">Bioinformatics</a></li><li class="breadcrumb-item"><a href="../../chapters/Bioinformatics/bam_tags.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">BAM 파일 태그</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -153,7 +99,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../../../">Learning Journal</a> 
+      <a href="../../">Learning Journal</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -165,13 +111,13 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../chapters/ComputerScience/intro.html" class="sidebar-item-text sidebar-link">
+            <a href="../../chapters/ComputerScience/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Computer Science</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -180,15 +126,28 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../chapters/ComputerScience/benchmarking/benchmarking.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../chapters/ComputerScience/benchmarking/benchmarking.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">성능평가에 사용할 수 있는 도구들</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">chapters/Bioinformatics/intro.qmd - chapters/Bioinformatics/bam_tags.qmd</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../chapters/Bioinformatics/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bioinformatics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/Bioinformatics/bam_tags.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">BAM 파일 태그</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -196,7 +155,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../chapters/Rust/intro.html" class="sidebar-item-text sidebar-link">
+            <a href="../../chapters/Rust/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Rust</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -205,8 +164,8 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../chapters/Rust/bam_handling/bam_handling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">noodles::bam</span></span></a>
+  <a href="../../chapters/Rust/bam_handling/bam_handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">noodles::bam</span></span></a>
   </div>
 </li>
       </ul>
@@ -221,7 +180,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../chapters/etc/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../chapters/etc/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">기타</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -230,15 +189,15 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../chapters/etc/citation_style.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto의 Citation Style</span></span></a>
+  <a href="../../chapters/etc/citation_style.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quarto의 Citation Style</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../chapters/references.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -252,19 +211,22 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#time" id="toc-time" class="nav-link active" data-scroll-target="#time">time</a></li>
-  <li><a href="#hyperfine" id="toc-hyperfine" class="nav-link" data-scroll-target="#hyperfine">hyperfine</a></li>
-  <li><a href="#psrecord" id="toc-psrecord" class="nav-link" data-scroll-target="#psrecord">psrecord</a></li>
+  <li><a href="#md" id="toc-md" class="nav-link active" data-scroll-target="#md">MD</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/ComputerScience/intro.html">Computer Science</a></li><li class="breadcrumb-item"><a href="../../../chapters/ComputerScience/benchmarking/benchmarking.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">성능평가에 사용할 수 있는 도구들</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/Bioinformatics/intro.html">Bioinformatics</a></li><li class="breadcrumb-item"><a href="../../chapters/Bioinformatics/bam_tags.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">BAM 파일 태그</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">성능평가에 사용할 수 있는 도구들</span></h1>
-</div>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">BAM 파일 태그</span></h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">news</div>
+    <div class="quarto-category">code</div>
+    <div class="quarto-category">analysis</div>
+  </div>
+  </div>
 
 
 
@@ -280,7 +242,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 18, 2024</p>
+      <p class="date">September 20, 2024</p>
     </div>
   </div>
   
@@ -293,70 +255,27 @@ div.csl-indent {
 
 
 <p><br><br></p>
-<p>정리 중.</p>
-<section id="time" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="time">time</h2>
-<p><span class="citation" data-cites="gnu_bash_time">(<a href="../../references.html#ref-gnu_bash_time" role="doc-biblioref">MacKenzie 1996</a>)</span></p>
-<p><code>time</code>은 shell keyword이다. 여기서 소개하는 것은 <code>/usr/bin/time</code>에 해당하는 것으로 <strong>shell에 내장된 keyword가 아닌 GNU의 <code>time</code></strong>이다.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/time</span> <span class="at">-v</span> sleep 1s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="time_v.png" class="img-fluid" style="width:70.0%"></p>
-<ul>
-<li>장점: 상세하다. computing resource도 계산해준다.</li>
-<li>단점: unix 계열 아니면 사용할 수 없음.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="TMI">
+<p>대부분의 태그 정보는 samtools의 TAG 설명이 담긴 PDF에 잘 설명된다. (<a href="https://samtools.github.io/hts-specs/SAMtags.pdf">PDF</a>)</p>
+<p>이 문서에서는 <strong>자주 사용하지 않지만 가끔 찾는 태그</strong>를 우선적으로 정리한다.</p>
+<section id="md" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="md">MD</h2>
+<p>Mismatch Description</p>
+<p>Reference genome과 일치하지 않는 Base를 CIGAR로 표현한 태그다. 예를 들어, <code>35M1A35M</code> 이라면 실제 CIGAR는 71M이지만 35개 Match를 양쪽에 두고 1개 A가 Mismatch임을 표시한다.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-TMI
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>GNU time은 2017년부터 <code>Assaf Gordon</code> 라는 분이 관리했는데 Bioinformatics를 하시는 분이다.👀</li>
-<li><code>which time</code>도 <code>/usr/bin/time</code>을 출력하는데, 그냥 path에 같이 있어서 그렇다. shell keyword로 대상으로 which를 하면 fail code를 반환한다.</li>
-</ul>
+<p>Reference와 불일치 하는 것만을 표시함에 유의하자. <strong>이 태그에는 Mismatch와 Deletion만 표시된다</strong>. Insertion을 포함해 Clipping, Reference Skip 등은 표시되지 않는다.</p>
 </div>
 </div>
-</section>
-<section id="hyperfine" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="hyperfine">hyperfine</h2>
-<p><span class="citation" data-cites="Peter_hyperfine_2023">(<a href="../../references.html#ref-Peter_hyperfine_2023" role="doc-biblioref">Peter 2023</a>)</span></p>
-<p><a href="https://github.com/sharkdp/hyperfine">github</a></p>
-<p><img src="hyperfine_example.png" class="img-fluid"></p>
-<p>benchmarking 도구. 실행시간을 측정할 수 있다. warmup 파라미터로 정해진 횟수만큼 미리 실행해서, 초기화 작업으로 인한 영향 차이를 줄이고 조금 더 정확하게 측정 가능하다고 함.</p>
-<ul>
-<li>장점: 간단하다. 이쁘고 보기좋게 측정해준다.</li>
-<li>단점: CPU, Memory usage는 계산하지 못하는듯.</li>
-</ul>
-<p>이쁜 timeit 느낌.</p>
-</section>
-<section id="psrecord" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="psrecord">psrecord</h2>
-<p><span class="citation" data-cites="psrecord_2013">(<a href="../../references.html#ref-psrecord_2013" role="doc-biblioref">Robitaille 2013</a>)</span></p>
-<p><a href="https://github.com/astrofrog/psrecord">github</a></p>
-<p>process id를 받고 CPU, Memory를 tracking하는 도구.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">psrecord</span> <span class="at">--log</span> activity.txt <span class="at">--plot</span> plot.png <span class="st">'sleep 10s'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>github repo에 있는 예시</strong> <img src="https://github.com/astrofrog/psrecord/blob/main/screenshot.png?raw=true" class="img-fluid"></p>
-<ul>
-<li>장점: 별도 process들을 tracking 할 수 있다. ploting이 가능하다.</li>
-<li>단점: 아직 딱히 모르겠음. windows 테스트 안해봤음.</li>
-</ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-gnu_bash_time" class="csl-entry" role="listitem">
-MacKenzie, David. 1996. <em>Time</em>. GNU Project; Online. <a href="https://man7.org/linux/man-pages/man1/time.1.html">https://man7.org/linux/man-pages/man1/time.1.html</a>.
-</div>
-<div id="ref-Peter_hyperfine_2023" class="csl-entry" role="listitem">
-Peter, David. 2023. <span>“<span class="nocase">hyperfine</span>.”</span> <a href="https://github.com/sharkdp/hyperfine">https://github.com/sharkdp/hyperfine</a>.
-</div>
-<div id="ref-psrecord_2013" class="csl-entry" role="listitem">
-Robitaille, Thomas P. 2013. <span>“<span class="nocase">psrecord</span>.”</span> <a href="https://github.com/astrofrog/psrecord">https://github.com/astrofrog/psrecord</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -771,12 +690,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../chapters/ComputerScience/intro.html" class="pagination-link" aria-label="Computer Science">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Computer Science</span>
+      <a href="../../chapters/Bioinformatics/intro.html" class="pagination-link" aria-label="Bioinformatics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Bioinformatics</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../chapters/Programming/intro.html" class="pagination-link" aria-label="Programming">
+      <a href="../../chapters/Programming/intro.html" class="pagination-link" aria-label="Programming">
         <span class="nav-page-text">Programming</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

@@ -1,0 +1,25 @@
+---
+title: "BAM 파일 태그"
+author: "jonghwan"
+date: "2024-09-20"
+categories: [news, code, analysis]
+image: "image.jpg"
+draft: true
+---
+
+<br><br>
+
+대부분의 태그 정보는 samtools의 TAG 설명이 담긴 PDF에 잘 설명된다. ([PDF](https://samtools.github.io/hts-specs/SAMtags.pdf))
+
+이 문서에서는 **자주 사용하지 않지만 가끔 찾는 태그**를  우선적으로 정리한다.
+
+## MD {.unnumbered}
+
+Mismatch Description
+
+Reference genome과 일치하지 않는 Base를 CIGAR로 표현한 태그다. 예를 들어, `35M1A35M` 이라면 실제 CIGAR는 71M이지만 35개 Match를 양쪽에 두고 1개 A가 Mismatch임을 표시한다.
+
+::: {.callout-warning}
+Reference와 불일치 하는 것만을 표시함에 유의하자. **이 태그에는 Mismatch와 Deletion만 표시된다**. Insertion을 포함해 Clipping, Reference Skip 등은 표시되지 않는다.
+:::
+

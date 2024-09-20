@@ -14,6 +14,8 @@ book:
       chapters:
         - chapters/ComputerScience/benchmarking/benchmarking.qmd
     - part: chapters/Bioinformatics/intro.qmd
+      chapters:
+        - chapters/Bioinformatics/bam_tags.qmd
     - part: chapters/Programming/intro.qmd
     - part: chapters/Rust/intro.qmd
       chapters: 
