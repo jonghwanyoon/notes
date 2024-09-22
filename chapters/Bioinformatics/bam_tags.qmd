@@ -17,7 +17,15 @@ draft: true
 
 Mismatch Description
 
-Reference genome과 일치하지 않는 Base를 CIGAR로 표현한 태그다. 예를 들어, `35M1A35M` 이라면 실제 CIGAR는 71M이지만 35개 Match를 양쪽에 두고 1개 A가 Mismatch임을 표시한다.
+Reference genome과 일치하지 않는 Base를 표현한 태그다. `숫자`는 Reference와 일치함을 의미하고, Mismatch와 Deletion은 `문자열` 및 `^문자열`로 나타난다.
+
+예를 들어, `35A35` 이라면 71개 sequence에서 35개 Match, 1개 A mismatch, 35개 Match이다.
+
+> **SAM Tag에서 MD 태그 설명**
+> 
+> - `[0-9]+`, indicating a run of reference bases that are identical to the corresponding SEQ bases;
+> - `[A-Z]`, identifying a single reference base that differs from the SEQ base aligned at that position;
+> - `\^[A-Z]+`, identifying a run of reference bases that have been deleted in the alignment
 
 ::: {.callout-warning}
 Reference와 불일치 하는 것만을 표시함에 유의하자. **이 태그에는 Mismatch와 Deletion만 표시된다**. Insertion을 포함해 Clipping, Reference Skip 등은 표시되지 않는다.

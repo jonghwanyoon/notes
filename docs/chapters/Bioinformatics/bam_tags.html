@@ -260,7 +260,16 @@ ul.task-list li input[type="checkbox"] {
 <section id="md" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="md">MD</h2>
 <p>Mismatch Description</p>
-<p>Reference genome과 일치하지 않는 Base를 CIGAR로 표현한 태그다. 예를 들어, <code>35M1A35M</code> 이라면 실제 CIGAR는 71M이지만 35개 Match를 양쪽에 두고 1개 A가 Mismatch임을 표시한다.</p>
+<p>Reference genome과 일치하지 않는 Base를 표현한 태그다. <code>숫자</code>는 Reference와 일치함을 의미하고, Mismatch와 Deletion은 <code>문자열</code> 및 <code>^문자열</code>로 나타난다.</p>
+<p>예를 들어, <code>35A35</code> 이라면 71개 sequence에서 35개 Match, 1개 A mismatch, 35개 Match이다.</p>
+<blockquote class="blockquote">
+<p><strong>SAM Tag에서 MD 태그 설명</strong></p>
+<ul>
+<li><code>[0-9]+</code>, indicating a run of reference bases that are identical to the corresponding SEQ bases;</li>
+<li><code>[A-Z]</code>, identifying a single reference base that differs from the SEQ base aligned at that position;</li>
+<li><code>\^[A-Z]+</code>, identifying a run of reference bases that have been deleted in the alignment</li>
+</ul>
+</blockquote>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
