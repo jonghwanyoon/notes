@@ -19,7 +19,7 @@ Mismatch Description
 
 Reference genome과 일치하지 않는 Base를 표현한 태그다. `숫자`는 Reference와 일치함을 의미하고, Mismatch와 Deletion은 `문자열` 및 `^문자열`로 나타난다.
 
-예를 들어, `35A35` 이라면 71개 sequence에서 35개 Match, 1개 A mismatch, 35개 Match이다.
+예를 들어, `35A35` 이라면 71개 sequence에서 35개 Match, 1개 mismatch (Reference가 A), 35개 Match이다. **여기서 Mismatch는 Reference Sequence를 보여줌에 유의하자.**
 
 > **SAM Tag에서 MD 태그 설명**
 > 
@@ -27,7 +27,15 @@ Reference genome과 일치하지 않는 Base를 표현한 태그다. `숫자`는
 > - `[A-Z]`, identifying a single reference base that differs from the SEQ base aligned at that position;
 > - `\^[A-Z]+`, identifying a run of reference bases that have been deleted in the alignment
 
+위 설명에 따라 정규표현식을 이용해 파싱하면 된다.
+
+```python
+re.findall(r"(\d+)|([A-Z]+|\^[A-Z]+)", md_string) # or finditer
+```
+
 ::: {.callout-warning}
 Reference와 불일치 하는 것만을 표시함에 유의하자. **이 태그에는 Mismatch와 Deletion만 표시된다**. Insertion을 포함해 Clipping, Reference Skip 등은 표시되지 않는다.
 :::
+
+
 
