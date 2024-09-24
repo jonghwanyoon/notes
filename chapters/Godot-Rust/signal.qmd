@@ -1,0 +1,100 @@
+---
+title: "Signal Connect"
+author: "jonghwan"
+date: "2024-09-24"
+---
+![](https://img.shields.io/badge/Godot%20v4.3-%23FFFFFF.svg?logo=godot-engine)
+<!-- ![](https://img.shields.io/badge/Rust-%23000000.svg?e&logo=rust&logoColor=white) -->
+![](https://img.shields.io/badge/Rust-godot%20v0.1.3-blue?&logo=rust&logoColor=white&labelColor=black)
+
+
+
+<br><br>
+
+
+signal은 특정 동작을 했음을 노드에 알려주는 역할을 한다 (자기자신 혹은 다른 노드). signal을 사용하려면 `connect`를 해야한다.
+
+**File Drag & Drop**을 예시로 봐보자.
+
+
+### Godot {.unnumbered}
+
+
+다음은 Godot의 예시다.
+
+```godot
+extends Control
+
+func _ready():
+	get_tree().get_root().files_dropped.connect(_on_files_dropped)
+
+func _on_files_dropped(files):
+	print(files)
+
+```
+
+화면에 파일을 drag&drop 했을 때, 파일 경로를 보여주는 기능을 한다.
+
+- `_ready`에서 tree에 있는 root 노드를 얻고, `files_dropped` 시그널을 `_on_files_dropped` 라는 함수와 연결한다.
+- `_on_files_dropped`은 files를 출력한다.
+
+
+
+
+### Rust {.unnumbered}
+
+이를 Rust로 작성하면 다음과 같다.
+
+```rust
+use godot::prelude::*;
+use godot::classes::{Control, IControl};
+
+#[derive(GodotClass)]
+#[class(base=Control)]
+struct MainNode {
+    base: Base<Control>
+}
+
+#[godot_api]
+impl MainNode {
+    #[func]
+    fn on_files_dropped(&mut self, files: PackedStringArray) {
+        godot_print!("{:?}", files);
+    }
+}
+
+#[godot_api]
+impl IControl for MainNode {
+    fn init(base: Base<Control>) -> Self {
+        Self {
+            base
+        }
+    }
+    
+    fn ready(&mut self) {
+        // root node를 mut으로 얻는다.
+        let mut root = self.base_mut()
+            .get_tree().unwrap()
+            .get_root().unwrap();
+
+        // root가 가진 files_dropped 시그널을 함수와 연결.
+        root.connect(
+            "files_dropped".into(),
+            self.base_mut().callable("on_files_dropped")
+        );
+    }
+}
+```
+
+ - `ready`에서 root노드를 먼저 얻고, root의 `connect` 메소드로 연결한다.
+ - self에 속한 method를 사용할 때에는 `self.base_mut().callable`을 통해 연결한다.
+ - `PackedStringArray`은 GString을 효율적으로 관리하는 타입이다 ([doc](https://godot-rust.github.io/docs/gdext/master/godot/builtin/struct.PackedStringArray.html)).
+
+
+<br>
+
+---
+
+<br>
+
+간단해보이는데 ChatGPT랑 Claude가 작성하지 못한다. 공식문서를 자세히 보지 않으면 잘 모를 수 있으므로, 이런식으로 케이스별 기록이 필요해보임.

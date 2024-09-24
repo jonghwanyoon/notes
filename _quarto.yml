@@ -22,6 +22,8 @@ book:
         - chapters/Rust/bam_handling/bam_handling.qmd
     - part: chapters/Godot/intro.qmd
     - part: chapters/Godot-Rust/intro.qmd
+      chapters:
+        - chapters/Godot-Rust/signal.qmd
     - part: chapters/etc/index.qmd
       chapters:
         - chapters/etc/citation_style.qmd

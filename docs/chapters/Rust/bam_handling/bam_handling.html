@@ -9,7 +9,7 @@
 <meta name="author" content="jonghwan">
 <meta name="dcterms.date" content="2024-09-18">
 
-<title>Learning Journal - 2&nbsp; noodles::bam</title>
+<title>Learning Journal - 3&nbsp; noodles::bam</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,7 +138,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Rust/intro.html">Rust</a></li><li class="breadcrumb-item"><a href="../../../chapters/Rust/bam_handling/bam_handling.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">noodles::bam</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Rust/intro.html">Rust</a></li><li class="breadcrumb-item"><a href="../../../chapters/Rust/bam_handling/bam_handling.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">noodles::bam</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -187,8 +187,21 @@ div.csl-indent {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Bioinformatics</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../../chapters/Bioinformatics/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bioinformatics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../chapters/Bioinformatics/bam_tags.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">BAM 파일 태그</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -206,7 +219,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../chapters/Rust/bam_handling/bam_handling.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">noodles::bam</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">noodles::bam</span></span></a>
   </div>
 </li>
       </ul>
@@ -216,8 +229,21 @@ div.csl-indent {
  <span class="menu-text">Godot</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Godot-Rust</span></span>
+      <div class="sidebar-item-container"> 
+            <a href="../../../chapters/Godot-Rust/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Godot-Rust</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../chapters/Godot-Rust/signal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Signal Connect</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -231,7 +257,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../chapters/etc/citation_style.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto의 Citation Style</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Quarto의 Citation Style</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,25 +278,25 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#noodles-설치" id="toc-noodles-설치" class="nav-link active" data-scroll-target="#noodles-설치"><span class="header-section-number">2.1</span> noodles 설치</a></li>
-  <li><a href="#비교에-사용한-bam" id="toc-비교에-사용한-bam" class="nav-link" data-scroll-target="#비교에-사용한-bam"><span class="header-section-number">2.2</span> 비교에 사용한 BAM</a></li>
-  <li><a href="#성능-비교" id="toc-성능-비교" class="nav-link" data-scroll-target="#성능-비교"><span class="header-section-number">2.3</span> 성능 비교</a>
+  <li><a href="#noodles-설치" id="toc-noodles-설치" class="nav-link active" data-scroll-target="#noodles-설치"><span class="header-section-number">3.1</span> noodles 설치</a></li>
+  <li><a href="#비교에-사용한-bam" id="toc-비교에-사용한-bam" class="nav-link" data-scroll-target="#비교에-사용한-bam"><span class="header-section-number">3.2</span> 비교에 사용한 BAM</a></li>
+  <li><a href="#성능-비교" id="toc-성능-비교" class="nav-link" data-scroll-target="#성능-비교"><span class="header-section-number">3.3</span> 성능 비교</a>
   <ul class="collapse">
-  <li><a href="#fetch" id="toc-fetch" class="nav-link" data-scroll-target="#fetch"><span class="header-section-number">2.3.1</span> Fetch</a></li>
-  <li><a href="#async" id="toc-async" class="nav-link" data-scroll-target="#async"><span class="header-section-number">2.3.2</span> Async</a></li>
-  <li><a href="#query" id="toc-query" class="nav-link" data-scroll-target="#query"><span class="header-section-number">2.3.3</span> Query</a></li>
-  <li><a href="#여러-작업이-동반된-fetch" id="toc-여러-작업이-동반된-fetch" class="nav-link" data-scroll-target="#여러-작업이-동반된-fetch"><span class="header-section-number">2.3.4</span> 여러 작업이 동반된 fetch</a></li>
+  <li><a href="#fetch" id="toc-fetch" class="nav-link" data-scroll-target="#fetch"><span class="header-section-number">3.3.1</span> Fetch</a></li>
+  <li><a href="#async" id="toc-async" class="nav-link" data-scroll-target="#async"><span class="header-section-number">3.3.2</span> Async</a></li>
+  <li><a href="#query" id="toc-query" class="nav-link" data-scroll-target="#query"><span class="header-section-number">3.3.3</span> Query</a></li>
+  <li><a href="#여러-작업이-동반된-fetch" id="toc-여러-작업이-동반된-fetch" class="nav-link" data-scroll-target="#여러-작업이-동반된-fetch"><span class="header-section-number">3.3.4</span> 여러 작업이 동반된 fetch</a></li>
   </ul></li>
-  <li><a href="#결론" id="toc-결론" class="nav-link" data-scroll-target="#결론"><span class="header-section-number">2.4</span> 결론</a></li>
+  <li><a href="#결론" id="toc-결론" class="nav-link" data-scroll-target="#결론"><span class="header-section-number">3.4</span> 결론</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Rust/intro.html">Rust</a></li><li class="breadcrumb-item"><a href="../../../chapters/Rust/bam_handling/bam_handling.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">noodles::bam</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Rust/intro.html">Rust</a></li><li class="breadcrumb-item"><a href="../../../chapters/Rust/bam_handling/bam_handling.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">noodles::bam</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">noodles::bam</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">noodles::bam</span></h1>
 </div>
 
 
@@ -302,24 +328,24 @@ div.csl-indent {
 <p>noodles <span class="citation" data-cites="github:noodles">(<a href="../../references.html#ref-github:noodles" role="doc-biblioref">zaeleus 2018</a>)</span> 는 생물정보학 관련 데이터를 다루기 위해 만들어진 순수 rust로 작성된 Crate이다.</p>
 <p>그 중, BAM 파일을 다루는 noodles::bam에 대해서 bam파일을 읽고 쓰는 방법에 대해 정리한다. pysam과 비교하며 진행한다.</p>
 <p>benchmarking에는 hyperfine <span class="citation" data-cites="Peter_hyperfine_2023">(<a href="../../references.html#ref-Peter_hyperfine_2023" role="doc-biblioref">Peter 2023</a>)</span>을 사용한다.</p>
-<section id="noodles-설치" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="noodles-설치"><span class="header-section-number">2.1</span> noodles 설치</h2>
+<section id="noodles-설치" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="noodles-설치"><span class="header-section-number">3.1</span> noodles 설치</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> add noodles <span class="at">--features</span> bam,bgzf,sam</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> add noodles-bgzf <span class="at">--features</span> libdeflate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>libdeflate</code>는 빠른 압축/압축해제와 관련된 라이브러리이고 htslib에서도 사용한다. <code>libdeflate</code> feature를 추가하지 않아도 사용 가능하지만 속도가 더 느려진다.</p>
 </section>
-<section id="비교에-사용한-bam" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="비교에-사용한-bam"><span class="header-section-number">2.2</span> 비교에 사용한 BAM</h2>
+<section id="비교에-사용한-bam" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="비교에-사용한-bam"><span class="header-section-number">3.2</span> 비교에 사용한 BAM</h2>
 <p><code>1000 Genome project</code>의 FTP에서 제공하는 <code>phase3</code>/<code>HG00096</code>/<code>chr20</code>/<code>low_coverage</code>/<code>bam</code> 을 사용했다. subject는 FTP 사이트의 제일 위에 있는 것을 선택했다.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam.bai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="성능-비교" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="성능-비교"><span class="header-section-number">2.3</span> 성능 비교</h2>
-<section id="fetch" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="fetch"><span class="header-section-number">2.3.1</span> Fetch</h3>
+<section id="성능-비교" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="성능-비교"><span class="header-section-number">3.3</span> 성능 비교</h2>
+<section id="fetch" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="fetch"><span class="header-section-number">3.3.1</span> Fetch</h3>
 <p><strong>Rust</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode rust code-with-copy"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> noodles_bam <span class="kw">as</span> bam<span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -355,18 +381,18 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="async" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="async"><span class="header-section-number">2.3.2</span> Async</h3>
+<section id="async" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="async"><span class="header-section-number">3.3.2</span> Async</h3>
 </section>
-<section id="query" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="query"><span class="header-section-number">2.3.3</span> Query</h3>
+<section id="query" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="query"><span class="header-section-number">3.3.3</span> Query</h3>
 </section>
-<section id="여러-작업이-동반된-fetch" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="여러-작업이-동반된-fetch"><span class="header-section-number">2.3.4</span> 여러 작업이 동반된 fetch</h3>
+<section id="여러-작업이-동반된-fetch" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="여러-작업이-동반된-fetch"><span class="header-section-number">3.3.4</span> 여러 작업이 동반된 fetch</h3>
 </section>
 </section>
-<section id="결론" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="결론"><span class="header-section-number">2.4</span> 결론</h2>
+<section id="결론" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="결론"><span class="header-section-number">3.4</span> 결론</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
