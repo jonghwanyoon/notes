@@ -87,12 +87,12 @@
   {
     "objectID": "chapters/Godot-Rust/signal.html",
     "href": "chapters/Godot-Rust/signal.html",
-    "title": "4  Signal Connect",
+    "title": "6  Signal Connect",
     "section": "",
     "text": "signal은 특정 동작을 했음을 노드에 알려주는 역할을 한다 (자기자신 혹은 다른 노드). signal을 사용하려면 connect를 해야한다.\nFile Drag & Drop을 예시로 봐보자.\n\nGodot\n다음은 Godot의 예시다.\nextends Control\n\nfunc _ready():\n    get_tree().get_root().files_dropped.connect(_on_files_dropped)\n\nfunc _on_files_dropped(files):\n    print(files)\n\n화면에 파일을 drag&drop 했을 때, 파일 경로를 보여주는 기능을 한다.\n\n_ready에서 tree에 있는 root 노드를 얻고, files_dropped 시그널을 _on_files_dropped 라는 함수와 연결한다.\n_on_files_dropped은 files를 출력한다.\n\n\n\nRust\n이를 Rust로 작성하면 다음과 같다.\nuse godot::prelude::*;\nuse godot::classes::{Control, IControl};\n\n#[derive(GodotClass)]\n#[class(base=Control)]\nstruct MainNode {\n    base: Base&lt;Control&gt;\n}\n\n#[godot_api]\nimpl MainNode {\n    #[func]\n    fn on_files_dropped(&mut self, files: PackedStringArray) {\n        godot_print!(\"{:?}\", files);\n    }\n}\n\n#[godot_api]\nimpl IControl for MainNode {\n    fn init(base: Base&lt;Control&gt;) -&gt; Self {\n        Self {\n            base\n        }\n    }\n    \n    fn ready(&mut self) {\n        // root node를 mut으로 얻는다.\n        let mut root = self.base_mut()\n            .get_tree().unwrap()\n            .get_root().unwrap();\n\n        // root가 가진 files_dropped 시그널을 함수와 연결.\n        root.connect(\n            \"files_dropped\".into(),\n            self.base_mut().callable(\"on_files_dropped\")\n        );\n    }\n}\n\nready에서 root노드를 먼저 얻고, root의 connect 메소드로 연결한다.\nself에 속한 method를 사용할 때에는 self.base_mut().callable을 통해 연결한다.\nPackedStringArray은 GString을 효율적으로 관리하는 타입이다 (doc).\n\n\n\n\n간단해보이는데 ChatGPT랑 Claude가 작성하지 못한다. 공식문서를 자세히 보지 않으면 잘 모를 수 있으므로, 이런식으로 케이스별 기록이 필요해보임.",
     "crumbs": [
       "Godot-Rust",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Signal Connect</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Signal Connect</span>"
     ]
   },
   {
@@ -108,34 +108,34 @@
   {
     "objectID": "chapters/etc/citation_style.html",
     "href": "chapters/etc/citation_style.html",
-    "title": "5  Quarto의 Citation Style",
+    "title": "7  Quarto의 Citation Style",
     "section": "",
-    "text": "5.1 .bib 파일 구조\n해당 파일에는 문헌 별 자료가 존재하는데 이를 entry라고 한다.\n각 엔트리는 @type{uniqueID} 형식으로 표현된다. 문헌의 고유한 이름은 uniqueID 로 표시되고, 문헌 정보는 key={value} 형식으로 입력된다.\n주요 타입은 다음과 같다.\n기타 타입은 다음과 같다.\n예를 들면 아래와 같다.\n위 고유 ID는 knuth:1984이다. qmd 파일에 @knuth:1984를 입력하면 다음처럼 나타난다.\n➡️ Knuth (1984)\n괄호에 따라 몇가지 변형이 있다.\n기본 세팅은 Chicago Manual fo Style을 따른다. quarto에서 포맷을 바꾸고 싶다면 CSL 파일을 제공해야한다.",
+    "text": "7.1 .bib 파일 구조\n해당 파일에는 문헌 별 자료가 존재하는데 이를 entry라고 한다.\n각 엔트리는 @type{uniqueID} 형식으로 표현된다. 문헌의 고유한 이름은 uniqueID 로 표시되고, 문헌 정보는 key={value} 형식으로 입력된다.\n주요 타입은 다음과 같다.\n기타 타입은 다음과 같다.\n예를 들면 아래와 같다.\n위 고유 ID는 knuth:1984이다. qmd 파일에 @knuth:1984를 입력하면 다음처럼 나타난다.\n➡️ Knuth (1984)\n괄호에 따라 몇가지 변형이 있다.\n기본 세팅은 Chicago Manual fo Style을 따른다. quarto에서 포맷을 바꾸고 싶다면 CSL 파일을 제공해야한다.",
     "crumbs": [
       "기타",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto의 Citation Style</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto의 Citation Style</span>"
     ]
   },
   {
     "objectID": "chapters/etc/citation_style.html#bib-파일-구조",
     "href": "chapters/etc/citation_style.html#bib-파일-구조",
-    "title": "5  Quarto의 Citation Style",
+    "title": "7  Quarto의 Citation Style",
     "section": "",
     "text": "@article: 논문을 인용할 때 사용\n@book: 책을 인용할 때 사용\n@inproceedings: 학회 발표 논문\n@software: 소프트웨어 인용시 사용.\n@manual: 사용자 가이드 같은 매뉴얼에 사용.\n@misc: 다양한 출처 (예: 웹사이트) 인용 시 사용\n\n\n\n@inbook\n@incollection\n@phdthesis, @masterthesis\n\n\n@article{knuth:1984,\n  title={Literate Programming},\n  author={Donald E. Knuth},\n  journal={The Computer Journal},\n  volume={27},\n  number={2},\n  pages={97--111},\n  year={1984},\n  publisher={Oxford University Press}\n}\n\n\n\n\n[@knuth:1984]: (Knuth 1984)",
     "crumbs": [
       "기타",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto의 Citation Style</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto의 Citation Style</span>"
     ]
   },
   {
     "objectID": "chapters/etc/citation_style.html#citation-style-language-csl-파일",
     "href": "chapters/etc/citation_style.html#citation-style-language-csl-파일",
-    "title": "5  Quarto의 Citation Style",
-    "section": "5.2 Citation Style Language (CSL) 파일",
-    "text": "5.2 Citation Style Language (CSL) 파일\ncsl 파일은 citation을 어떻게 표현할지에 대한 포맷이 작성된 XML 파일이다.\n직접수정하기는 어려울 수 있다.\n하지만 만들어진 csl 파일이 정말많으므로 원하는 포맷을 검색하는게 더 낫다.\nCSL에서 제공하는 style seacrh engine\ncitation 구조를 바꾸기 위해서는 Citation Style Language를 주어야 한다. .csl 파일을 제공해야 하며 파일이 있을 때 적용하는 방법은 링크 에 있다.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” The Computer Journal 27 (2): 97–111.",
+    "title": "7  Quarto의 Citation Style",
+    "section": "7.2 Citation Style Language (CSL) 파일",
+    "text": "7.2 Citation Style Language (CSL) 파일\ncsl 파일은 citation을 어떻게 표현할지에 대한 포맷이 작성된 XML 파일이다.\n직접수정하기는 어려울 수 있다.\n하지만 만들어진 csl 파일이 정말많으므로 원하는 포맷을 검색하는게 더 낫다.\nCSL에서 제공하는 style seacrh engine\ncitation 구조를 바꾸기 위해서는 Citation Style Language를 주어야 한다. .csl 파일을 제공해야 하며 파일이 있을 때 적용하는 방법은 링크 에 있다.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” The Computer Journal 27 (2): 97–111.",
     "crumbs": [
       "기타",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto의 Citation Style</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto의 Citation Style</span>"
     ]
   },
   {
