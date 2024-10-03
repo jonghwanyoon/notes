@@ -21,6 +21,9 @@ book:
       chapters: 
         - chapters/Rust/bam_handling/bam_handling.qmd
     - part: chapters/Godot/intro.qmd
+      chapters:
+        - chapters/Godot/tilemap/tilemap.qmd
+        - chapters/Godot/axis/axis.qmd
     - part: chapters/Godot-Rust/intro.qmd
       chapters:
         - chapters/Godot-Rust/signal.qmd

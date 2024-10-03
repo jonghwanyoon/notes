@@ -1,0 +1,29 @@
+---
+title: "Axis (축)"
+author: "jonghwan"
+date: "2024-09-17"
+categories: [news, code, analysis]
+image: "image.jpg"
+draft: true
+---
+ 
+
+3D 공간에서 무언가를 회전할 때는 어느 축을 기준으로 한다. 보통의 X,Y,Z 로 나타내는 데카르트 좌표계를 생각하면 된다.
+
+아래 그림을 보면 이해가 쉽다.
+
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Yaw_Axis_Corrected.svg/500px-Yaw_Axis_Corrected.svg.png)
+
+### X축 기준 (Pitch) {.unnumbered}
+
+X축을 기준으로 회전하면 앞 부분이 **위/아래로 회전하게 된다**. 비행기가 위/아래로 향하는 것과 같다.
+
+
+### Y축 기준 (Roll) {.unnumbered}
+
+Y축을 기준으로 회전하면 **좌/우 로 기울어진다**. 비행기가 좌/우로 기울어지는 것과 같다.
+
+### Z축 기준 (Yaw) {.unnumbered}
+
+Z축을 기준으로 회전하면 수평면에서 좌/우로 회전하게 된다. 비행기나 자동차가 좌/우로 회전하는 것과 같다.
