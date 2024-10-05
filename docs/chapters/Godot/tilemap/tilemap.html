@@ -9,7 +9,7 @@
 <meta name="author" content="jonghwan">
 <meta name="dcterms.date" content="2024-09-17">
 
-<title>Learning Journal - 4&nbsp; Tilemap</title>
+<title>Learning Journal - 5&nbsp; Tilemap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Godot/intro.html">Godot</a></li><li class="breadcrumb-item"><a href="../../../chapters/Godot/tilemap/tilemap.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tilemap</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Godot/intro.html">Godot</a></li><li class="breadcrumb-item"><a href="../../../chapters/Godot/tilemap/tilemap.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tilemap</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -147,6 +147,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">BAM 파일 태그</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../chapters/Bioinformatics/downsampling/downsampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">downsampling 원리</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -165,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../chapters/Rust/bam_handling/bam_handling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">noodles::bam</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">noodles::bam</span></span></a>
   </div>
 </li>
       </ul>
@@ -182,13 +188,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../chapters/Godot/tilemap/tilemap.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tilemap</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tilemap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../chapters/Godot/axis/axis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Axis (축)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Axis (축)</span></span></a>
   </div>
 </li>
       </ul>
@@ -205,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../chapters/Godot-Rust/signal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Signal Connect</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Signal Connect</span></span></a>
   </div>
 </li>
       </ul>
@@ -222,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../chapters/etc/citation_style.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Quarto의 Citation Style</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Quarto의 Citation Style</span></span></a>
   </div>
 </li>
       </ul>
@@ -243,18 +249,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tilemap에-대한-요약." id="toc-tilemap에-대한-요약." class="nav-link active" data-scroll-target="#tilemap에-대한-요약."><span class="header-section-number">4.1</span> Tilemap에 대한 요약.</a></li>
-  <li><a href="#physics-layer" id="toc-physics-layer" class="nav-link" data-scroll-target="#physics-layer"><span class="header-section-number">4.2</span> physics layer</a></li>
-  <li><a href="#layer" id="toc-layer" class="nav-link" data-scroll-target="#layer"><span class="header-section-number">4.3</span> Layer</a></li>
+  <li><a href="#tilemap에-대한-요약." id="toc-tilemap에-대한-요약." class="nav-link active" data-scroll-target="#tilemap에-대한-요약."><span class="header-section-number">5.1</span> Tilemap에 대한 요약.</a></li>
+  <li><a href="#physics-layer" id="toc-physics-layer" class="nav-link" data-scroll-target="#physics-layer"><span class="header-section-number">5.2</span> physics layer</a></li>
+  <li><a href="#layer" id="toc-layer" class="nav-link" data-scroll-target="#layer"><span class="header-section-number">5.3</span> Layer</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Godot/intro.html">Godot</a></li><li class="breadcrumb-item"><a href="../../../chapters/Godot/tilemap/tilemap.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tilemap</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../chapters/Godot/intro.html">Godot</a></li><li class="breadcrumb-item"><a href="../../../chapters/Godot/tilemap/tilemap.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tilemap</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tilemap</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Tilemap</span></h1>
   <div class="quarto-categories">
     <div class="quarto-category">news</div>
     <div class="quarto-category">code</div>
@@ -288,14 +294,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="tilemap에-대한-요약." class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="tilemap에-대한-요약."><span class="header-section-number">4.1</span> Tilemap에 대한 요약.</h2>
+<section id="tilemap에-대한-요약." class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="tilemap에-대한-요약."><span class="header-section-number">5.1</span> Tilemap에 대한 요약.</h2>
 <p>간결하게 잘 알려줌.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tQSL2scuqeU?si=7MExNvhsxQmjBCvl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 </section>
-<section id="physics-layer" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="physics-layer"><span class="header-section-number">4.2</span> physics layer</h2>
+<section id="physics-layer" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="physics-layer"><span class="header-section-number">5.2</span> physics layer</h2>
 <p>TailMap 노드를 만고, TileSet에서 로드하면, 여러 설정을 할 수 있다. 인스펙터에서 TileSet 하위에 <code>Physics layer</code>에 요소를 추가하면 여러 Layer를 추가할 수 있다.</p>
 <blockquote class="blockquote">
 <p>Collision Layer는 현재 Layer의 번호이고, Collision Mask는 어떤 Layer와 Collisino을 일으킬수 있는지 나타낸다.</p>
@@ -303,8 +309,8 @@ ul.task-list li input[type="checkbox"] {
 <p>요소추가후, 하단 TileSet &gt; 선택 &gt; Physics layer 하위에서 Collision 모양을 설정할 수 있다. 설정하면 해당 Tile에 대해 Collision이 설정된다.</p>
 <p><img src="screenshot.png" class="img-fluid"></p>
 </section>
-<section id="layer" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="layer"><span class="header-section-number">4.3</span> Layer</h2>
+<section id="layer" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="layer"><span class="header-section-number">5.3</span> Layer</h2>
 <p>Tilemap에 대한 Layer를 요소추가를 통해 늘릴 수 있다.</p>
 <p>예를 들어 Ground, Ground Objects, Air Objects로 하고 Air Object의 z-index를 player보다 높게 설정하면, player보다 위에 표시되게 된다.</p>
 <p>Tile 별로 Layer를 설정할 수 있으니 유용하게 사용 가능할 듯.</p>
@@ -730,7 +736,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../../chapters/Godot/axis/axis.html" class="pagination-link" aria-label="Axis (축)">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Axis (축)</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Axis (축)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

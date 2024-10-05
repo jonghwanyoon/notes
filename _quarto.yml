@@ -16,6 +16,7 @@ book:
     - part: chapters/Bioinformatics/intro.qmd
       chapters:
         - chapters/Bioinformatics/bam_tags.qmd
+        - chapters/Bioinformatics/downsampling/downsampling.qmd
     - part: chapters/Programming/intro.qmd
     - part: chapters/Rust/intro.qmd
       chapters: 
